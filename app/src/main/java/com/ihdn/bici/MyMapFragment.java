@@ -19,6 +19,16 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MyMapFragment extends Fragment implements OnMapReadyCallback {
 
+    double latitud = 0;
+    double longitud = 0;
+
+    public MyMapFragment() {
+    }
+
+    public MyMapFragment(double latitud, double longitud) {
+        this.latitud = latitud;
+        this.longitud = longitud;
+    }
 
     @Nullable
     @Override
@@ -29,18 +39,14 @@ public class MyMapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         MapFragment fragment = (MapFragment)getChildFragmentManager().findFragmentById(R.id.map);
         fragment.getMapAsync(this);
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
-        LatLng marker = new LatLng(6.265227, -75.568203);
-
+        LatLng marker = new LatLng(latitud, longitud);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(marker, 13));
-
         googleMap.addMarker(new MarkerOptions().title("Hello Google Maps!").position(marker));
     }
 }
