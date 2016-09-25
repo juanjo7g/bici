@@ -41,7 +41,14 @@ public class MainActivity extends AppCompatActivity
                 .replace(R.id.information_view, infoFragment)
                 .commit();
 
-        Intent i = new Intent(MainActivity.this, LoginController.class);
+        /*
+         Intent intent = new Intent(this, DisplayMessageActivity.class);
+        EditText editText = (EditText) findViewById(R.id.edit_message);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+         */
+        Intent i = new Intent(this, LoginController.class);
         startActivity(i);
 
     }
